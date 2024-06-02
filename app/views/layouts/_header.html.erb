@@ -1,0 +1,24 @@
+<header>
+  <h1>SmartSwitch</h1>
+  <div>
+    <% if user_signed_in? %>
+    <span>Hello, <%= current_user.email %></span> |
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Log in', new_user_session_path %> |
+    <%= link_to 'Sign up', new_user_registration_path %>
+  <% end %>
+  </div>
+</header>
+
+<style>
+  header {
+    width: 100%;
+    background-color: #00acc1;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+</style>

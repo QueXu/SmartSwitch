@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Device: <%= @device.name %></title>
+  <style>
+    .device-details {
+      margin: 20px;
+    }
+    .btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+    }
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <div class="device-details">
+    <h1>Device: <%= @device.name %></h1>
+    <p>MAC Address: <%= @device.mac_address %></p>
+
+    <%= form_with url: toggle_state_device_path(@device), method: :post do %>
+      <div>
+        <%= label_tag :state, "Turn On/Off" %>
+        <%= check_box_tag :state, 'on', @device.state == 'on', onchange: 'this.form.submit();' %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Edit', edit_device_path(@device), class: "btn" %> |
+    <%= link_to 'Back', devices_path, class: "btn btn-secondary" %>
+    <%= button_to 'Delete', device_path(@device), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  </div>
+</body>
+</html>

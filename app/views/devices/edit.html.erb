@@ -1,0 +1,17 @@
+<h1>Edit Device</h1>
+
+<%= form_with(model: @device, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :mac_address %>
+    <%= form.text_field :mac_address %>
+  </div>
+  <div>
+    <%= form.submit 'Update Device' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', devices_path %>
